@@ -9,4 +9,9 @@ import Lib
 -}
 main :: IO ()
 -- А я - скромный однострочный комментарий.
-main = putStrLn "Hi, real world!"
+
+main = putStrLn (checkLocalhost "127.0.0.1")
+
+
+checkLocalhost :: String -> String
+checkLocalhost ip = if ip == "127.0.0.1" || ip == "0.0.0.0" then "This is localhost" else "This is not localhost"
