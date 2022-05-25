@@ -1,0 +1,1 @@
+# Haskell Stack Education Boilerplate
