@@ -5,16 +5,31 @@ module Main where
 import Lib
 
 main :: IO ()
--- А я - скромный однострочный комментарий.
 
-main = putStrLn (analyzeGold 100)
+main = putStrLn (calculateTime 12)
+
+-- calculateTime :: Int -> Int
+-- calculateTime timeInS =
+--   if | timeInS < 40 -> timeInS + 120
+--      | timeInS < 40 -> timeInS + 8 + 120
 
 
-checkLocalhost :: String -> String
-checkLocalhost ip =
-  if ip == "127.0.0.1" || ip == "0.0.0.0"
-    then "This is localhost"
-    else "This is not localhost"
+calculateTime :: Int -> Int
+calculateTime timeInS =
+let threshold = 40
+correction = 120
+delta = 8
+  in
+  if | timeInS < threshold -> timeInS + correction
+  | timeInS >= threshold -> timeInS + delta + correction
+
+
+
+-- checkLocalhost :: String -> String
+-- checkLocalhost ip =
+--   if ip == "127.0.0.1" || ip == "0.0.0.0"
+--     then "This is localhost"
+--     else "This is not localhost"
 
 
 -- analyzeGold :: Int -> String
@@ -25,9 +40,17 @@ checkLocalhost ip =
 --      | otherwise = "Idk such a standard!"
 
 
-analyzeGold :: Int -> String -- Одно объявление.
--- И множество определений...
-analyzeGold 999 = "Wow! 999 standard!"
-analyzeGold 750 = "Great! 750 standard."
-analyzeGold 585 = "Not bad! 585 standard."
-analyzeGold _ = "I don't know such a standard..."
+-- analyzeGold :: Int -> String -- Одно объявление.
+-- -- И множество определений...
+-- analyzeGold 999 = "Wow! 999 standard!"
+-- analyzeGold 750 = "Great! 750 standard."
+-- analyzeGold 585 = "Not bad! 585 standard."
+-- analyzeGold _ = "I don't know such a standard..."
+
+-- analyzeGold :: Int -> String
+-- analyzeGold standard =
+--  case standard of
+--    999 -> "Wow! 999 standard!"
+--    750 -> "Great! 750 standard."
+--    585 -> "Not bad! 585 standard."
+--    _ -> "I don't know such a standard..."
