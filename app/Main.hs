@@ -6,7 +6,7 @@ import Lib
 
 main :: IO ()
 
-main = putStrLn (calculateTime 12)
+main = putStrLn ()
 
 -- calculateTime :: Int -> Int
 -- calculateTime timeInS =
@@ -14,15 +14,22 @@ main = putStrLn (calculateTime 12)
 --      | timeInS < 40 -> timeInS + 8 + 120
 
 
+-- calculateTime :: Int -> Int
+-- calculateTime timeInS =
+--   let threshold = 40; correction = 120
+--   in
+--   if | timeInS < threshold -> timeInS + correction
+--      | otherwise ->
+--        let delta = 8 in timeInS + delta + correction
+
 calculateTime :: Int -> Int
 calculateTime timeInS =
-let threshold = 40
-correction = 120
-delta = 8
-  in
+  let threshold = 40 in
   if | timeInS < threshold -> timeInS + correction
-  | timeInS >= threshold -> timeInS + delta + correction
-
+     | otherwise -> timeInS + delta + correction
+  where
+    correction = 120
+    delta      = 8
 
 
 -- checkLocalhost :: String -> String
